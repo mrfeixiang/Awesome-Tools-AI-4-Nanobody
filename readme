@@ -1,0 +1,418 @@
+# Awesome Tools AI 4 Nanobody
+
+A practical, research-facing collection of AI tools, models, benchmarks, and resources for nanobody (VHH/VNAR) discovery, design, optimization, and validation workflows.
+
+This list is adapted from the “AI4Protein 2025” outline you provided, then refocused specifically for nanobody-centric work. It is not a ranking. Expect omissions and imperfect taxonomy. PRs welcome.
+
+---
+
+## Contents
+
+* [Scope](#scope)
+* [End-to-end nanobody design and optimization](#end-to-end-nanobody-design-and-optimization)
+* [Antibody and VHH/VNAR design](#antibody-and-vhhvnar-design)
+* [Binder design (general protein binders relevant to nanobody workflows)](#binder-design-general-protein-binders-relevant-to-nanobody-workflows)
+* [Structure prediction (antibody, complexes, cyclic peptides)](#structure-prediction-antibody-complexes-cyclic-peptides)
+* [Affinity, stability, developability, and interaction prediction](#affinity-stability-developability-and-interaction-prediction)
+* [Conformation sampling and dynamics](#conformation-sampling-and-dynamics)
+* [Protein language models and sequence generation](#protein-language-models-and-sequence-generation)
+* [Agents and automated research workflows](#agents-and-automated-research-workflows)
+* [Datasets, benchmarks, and databases](#datasets-benchmarks-and-databases)
+* [Practical workflow templates](#practical-workflow-templates)
+* [Contributing](#contributing)
+* [License](#license)
+
+---
+
+## Scope
+
+This list focuses on tools that directly support nanobody discovery and engineering:
+
+* Sequence generation or optimization (VHH/VNAR, CDR)
+* Structure prediction for nanobodies and complexes
+* Binder design frameworks that can be used to produce nanobody-like binders or accelerate target interface exploration
+* Affinity and stability predictors, including ΔΔG and PPI scoring
+* Sampling methods for ensembles and IDR-related interactions when relevant
+* Agents that automate literature, hypothesis iteration, and design loops
+* Benchmarks and datasets that help evaluate models in realistic settings
+
+---
+
+## End-to-end nanobody design and optimization
+
+These are “pipeline-like” tools or families you can string together for a full design loop.
+
+* **IgGM**
+  Antibody framework oriented design workflows, often used as a starting point for VHH-style tasks.
+
+* **Germinal**
+  Antibody-focused design and optimization tool family, relevant to nanobody sequence and CDR exploration.
+
+* **Chai-2**
+  Antibody and VHH-relevant design workflow tool mentioned in your list.
+
+* **JAM-2**
+  Antibody and VHH-relevant design workflow tool mentioned in your list.
+
+* **tFold System**
+  Antibody-related system referenced in your list.
+
+Tip: In practice, an end-to-end loop tends to look like “generate sequences → predict structure/complex → score affinity and stability → filter for developability → iterate with active learning and wet-lab feedback.”
+
+---
+
+## Antibody and VHH/VNAR design
+
+### ScFv / antibody design (often transferable to nanobody logic)
+
+* **MAGE**
+  Language-model driven antibody design (listed under Cell).
+
+* **Germinal**
+  Broad antibody design toolkit, also listed for VHH.
+
+* **IgGM**
+  Antibody framework and design methods that can be adapted to VHH constraints.
+
+### VHH design (explicitly listed)
+
+* **RFantiboy**
+  Listed as a Baker-related de novo antibody design model.
+
+* **EvolveX**
+  Listed as a VHH design tool.
+
+* **mBER**
+  Listed as a VHH design tool.
+
+* **ODesign**
+  Listed for VHH design.
+
+* **BoltzGen**
+  Listed for VHH design.
+
+* **FoldCraft**
+  Listed for VHH design.
+
+* **Nanodesigner**
+  Listed for VHH design.
+
+* **GeoFlow-V2 / GeoFlow-V3**
+  Listed for VHH design.
+
+* **nanoFOLD**
+  Listed for VHH design.
+
+### CDR design (useful for nanobody affinity maturation)
+
+* **HalluDesign**
+  Listed for CDR design.
+
+* **UniMoMo**
+  Listed for CDR design.
+
+* **MFDesign**
+  Listed for CDR design.
+
+### Other immune receptor related tools
+
+* **NanoBinder**
+  Listed under antibody design “other,” likely relevant for nanobody-like binder workflows.
+
+* **ALLM-Ab**
+  Listed under antibody design “other.”
+
+* **AlphaBind**
+  Listed under antibody design “other.”
+
+* **TCR-TRANSLATE**
+  TCR oriented, included for completeness when modeling immune receptor design principles.
+
+---
+
+## Binder design (general protein binders relevant to nanobody workflows)
+
+Even when a tool is not “nanobody-specific,” general binder design methods often accelerate epitope selection, interface exploration, and competitive binder concepting.
+
+### General binder design frameworks
+
+* **RFdiffusion3 / RFdiffusion2**
+  General de novo design family, often used for binders and scaffolds.
+
+* **HalluDesign**
+  Mentioned across design tasks, including binder-related applications.
+
+* **Protein Hunter**
+  Listed under general design.
+
+* **ODesign**
+  Listed under general design and binder design.
+
+* **BoltzGen / BoltzDesign1**
+  Listed under general design and binder design, including ion and small-molecule binder categories.
+
+* **OriginFlow**
+  Listed under general design and binder design.
+
+* **Neo-1**
+  Listed under general design and binder design.
+
+### Protein binder specific
+
+* **BindCraft**
+  Listed under Nature, de novo binder design.
+
+* **PXDesign**
+  Listed under protein binder.
+
+* **BinderFlow**
+  Listed under protein binder.
+
+* **UniMoMo**
+  Listed under binder design.
+
+* **Prot42**
+  Listed under protein binder.
+
+* **BindEnergyCraft**
+  Listed under protein binder.
+
+* **Mosaic (escalante-bio)**
+  Listed under protein binder.
+
+* **nf-binder-design**
+  Listed under protein binder.
+
+### IDR and special targets (relevant for “hard” antigens)
+
+* **FINCHES**
+  Predicts IDR interactions, useful when designing binders to disordered regions.
+
+---
+
+## Structure prediction (antibody, complexes, cyclic peptides)
+
+### Protein structure prediction and complex modeling
+
+* **ESM3**
+  Multi-modal protein model listed in Science and structure prediction.
+
+* **RosettaFold3 / OpenFold3**
+  Listed under structure prediction.
+
+* **Boltz-1x / CryoBoltz**
+  Listed under structure prediction, plus Cryo-related variants.
+
+* **AF3Complex**
+  Listed, relevant to complex prediction.
+
+* **D-I-TASSER / IntFold / TDFold / MultiFOLD2**
+  Listed structure predictors.
+
+### Antibody-epitope related and loops
+
+* **AutoLoop**
+  Listed under “other,” relevant to loop modeling.
+
+* **AbEpiTope**
+  Listed under “other,” relevant to antibody-epitope context.
+
+### Cyclic peptides (useful for epitope probing, competitive binding, or alternative modalities)
+
+* **CyclicBoltz1 / AfCycDesign / HighFold3 / MeDCycFold**
+  Listed under cyclic peptide prediction and design.
+
+---
+
+## Affinity, stability, developability, and interaction prediction
+
+These tools are crucial for filtering nanobody candidates before synthesis and for prioritizing experimental assays.
+
+### Affinity, ΔΔG, PPI, binding site
+
+* **Graphinity**
+  Antigen-antibody ΔΔG related scoring in your list.
+
+* **PCANN**
+  Language-model based binding prediction.
+
+* **MPBind**
+  Protein binding site prediction.
+
+* **BindFlow**
+  Protein-ligand affinity prediction, sometimes used for scoring interfaces or alternative ligands.
+
+* **ProAffinity++**
+  Protein-protein affinity prediction.
+
+* **AlphaPPIMI / ProteomeLM / SWING**
+  PPI prediction tools listed.
+
+* **SpatPPI**
+  IDR interaction related PPI prediction.
+
+### Stability and mutational effects
+
+* **STAB-DDG**
+  ΔΔG style stability evaluation.
+
+* **ProStab / DVE-stability**
+  Stability prediction for mutants.
+
+* **ESMDance**
+  Predicting mutation effects.
+
+### Flexible regions and quality assessment
+
+* **ITsFlexible**
+  Antibody CDR flexibility prediction.
+
+* **AF3Score / FoldScript / ContrastQA / actifpTM / ELEN**
+  Structure scoring and assessment tools listed.
+
+### HLA and immune interfaces (optional but sometimes relevant)
+
+* **HPL / TRAP / THLANet**
+  HLA and TCR-pMHC related predictors, included when your nanobody project touches immune complex targets.
+
+---
+
+## Conformation sampling and dynamics
+
+Nanobody binding is often conformation-sensitive. Sampling helps validate whether a pose is stable and whether an epitope is transient.
+
+* **BioEmu**
+  Monomer multi-conformation sampling.
+
+* **ESMDiff**
+  Diffusion-based sampling listed.
+
+* **AlphaFlex / PTraj-Diff / CryoPhold / CryoBoltz**
+  Sampling and cryo-related sampling tools listed.
+
+* **STARLING**
+  IDP focused sampling, useful for disordered antigen regions.
+
+* **BAMBOO / MD-LLM-1**
+  ML force field and MD large-model related tools listed.
+
+---
+
+## Protein language models and sequence generation
+
+Language models are a core engine for generating candidate VHH sequences and for iterative optimization.
+
+### PLM (protein language models)
+
+* **ProGen3**
+* **PoET-2**
+* **μFormer**
+* **DePLM**
+* **xTrimoPGLM**
+* **ProtBFN / AbBFN**
+* **ProteinReasoner**
+* **MSA Pairformer**
+* **ProteinGPT**
+* **Prot42**
+* **PTM-Mamba**
+* **InterPLM** (interpretability)
+
+### GLM (genome language models, less directly nanobody but relevant for target biology)
+
+* **AlphaGenome**
+* **Evo2**
+* **LucaOne**
+* **BioReason**
+* **CodonTransformer**
+* **OmniReg-GPT**
+
+---
+
+## Agents and automated research workflows
+
+Agents are increasingly relevant for “design-build-test-learn” cycles, literature triage, and multi-tool orchestration.
+
+* **Virtual Lab**
+  Listed as an agent design system for SARS-CoV-2 nanobody design.
+
+* **CRISPR-GPT**
+  Gene editing agent, included as an example of agentic tooling in bio.
+
+* **BioMni / STELLA / DrBioRight / PrimeGen / AgentD**
+  Agent systems listed in your outline.
+
+* **Biomedical AI-Q / NVIDIA AI-Q / BiomedGPT / MedGemma**
+  Agent or agent-adjacent systems listed, useful for workflow integration and question answering around biomedical contexts.
+
+---
+
+## Datasets, benchmarks, and databases
+
+Strong evaluation requires realistic datasets and negative examples.
+
+* **FoldBench**
+  Benchmark for structure prediction.
+
+* **VenusPod**
+  Protein sequence dataset.
+
+* **VenusMutHub**
+  Mutation dataset.
+
+* **ALL-conformations**
+  CDR conformation related database.
+
+* **MolGlueDB**
+  Molecular glue database (useful if your nanobody program intersects degradation or ternary complex design logic).
+
+* **MMseqs2_GPU / FAMSA2 / Foldseek-Multimer / PreTrek**
+  Search and alignment tools that underpin dataset curation and rapid homolog retrieval.
+
+---
+
+## Practical workflow templates
+
+### Template A: VHH candidate generation to shortlist
+
+1. Generate VHH candidates: PLM-based generation (e.g., AbBFN, ProteinGPT) or VHH tools (RFantiboy, ODesign, BoltzGen).
+2. Predict structure or complex: ESM3, RosettaFold3, OpenFold3, AF3Complex.
+3. Score interfaces: Graphinity, ProAffinity++, PCANN, plus quality filters (AF3Score, FoldScript).
+4. Stability and developability filters: STAB-DDG, ProStab, DVE-stability, ITsFlexible.
+5. Sampling validation: BioEmu, ESMDiff, AlphaFlex.
+6. Select for wet lab: diversity clustering + top-scoring candidates.
+
+### Template B: Affinity maturation (CDR-focused)
+
+1. Propose CDR variants: HalluDesign, UniMoMo, MFDesign.
+2. Structural re-prediction and rescoring: ESM3/AF3Complex + Graphinity/ProAffinity++.
+3. Stability guardrails: STAB-DDG, ProStab.
+4. Iterate with experimental feedback (active learning).
+
+---
+
+## Contributing
+
+PRs are welcome. Please include:
+
+* Tool name
+* What problem it solves for nanobody work
+* Input and output expectations
+* A short “when to use” note
+* A reference (paper, repo, or documentation link)
+
+If you want, I can also:
+
+* Convert this list into a GitHub Pages site (docs/ + index.md) with navigation.
+* Add a “tool selection matrix” for nanobody tasks (discovery vs maturation vs developability vs complex prediction).
+* Generate a bilingual version (Korean + English) while keeping the same repo structure.
+
+---
+
+## License
+
+You can adopt the common convention for awesome lists:
+
+* Content: CC0-1.0 or CC BY 4.0
+* Code snippets: MIT
+
+(Choose one and I will insert the exact boilerplate.)
