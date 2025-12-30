@@ -1,1 +1,17 @@
-# Jekyll config
+title: "Awesome Tools AI 4 Nanobody"
+description: "AI tools, models, datasets, and workflows for nanobody (VHH/VNAR) discovery and engineering."
+theme: jekyll-theme-cayman
+markdown: kramdown
+
+plugins:
+  - jekyll-relative-links
+
+relative_links:
+  enabled: true
+  collections: true
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
